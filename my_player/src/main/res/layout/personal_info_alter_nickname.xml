@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#E7E7E7">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_alter_nickname_toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:fitsSystemWindows="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="昵称："
+            android:textSize="17sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/alter_nickname_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+        <EditText
+            android:id="@+id/personal_info_alter_nickname_new_nickname_et"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/alter_nickname_edit_text_round_corner_bg"
+            android:drawableStart="@drawable/alter_nickname_user_icon"
+            android:drawablePadding="15dp"
+            android:hint="请输入新昵称（5~30位字符）"
+            android:paddingStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <EditText
+            android:id="@+id/personal_info_alter_nickname_verify_code"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/alter_nickname_edit_text_round_corner_bg"
+            android:drawableStart="@drawable/alter_nickname_verify_icon"
+            android:drawablePadding="10dp"
+            android:hint="请输入验证码"
+            app:layout_constraintEnd_toStartOf="@id/personal_info_nickname_get_code"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/personal_info_alter_nickname_new_nickname_et" />
+
+        <TextView
+            android:id="@+id/personal_info_nickname_get_code"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/orange_corner_button"
+            android:gravity="center"
+            android:text="短信验证"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/personal_info_alter_nickname_verify_code"
+            app:layout_constraintTop_toBottomOf="@id/personal_info_alter_nickname_new_nickname_et" />
+
+        <TextView
+            android:id="@+id/personal_info_alter_nickname_finish_tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/orange_corner_button"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/personal_info_nickname_get_code" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

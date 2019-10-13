@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/forum_post_details_post"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/forum_post_details_comment"
+        app:layout_constraintTop_toTopOf="parent"></android.support.v7.widget.RecyclerView>
+    <RelativeLayout
+        android:id="@+id/forum_post_details_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="10dp"
+        android:background="@android:color/white">
+        <EditText
+            android:id="@+id/forum_post_details_send_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="评论一下~"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingEnd="10dp"
+            android:drawableEnd="@drawable/video_view_main_bottom_bar_send"
+            android:background="@drawable/forum_post_details_et_round_corner"/>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

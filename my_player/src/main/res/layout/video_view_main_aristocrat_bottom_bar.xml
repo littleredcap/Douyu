@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#FFFFE0"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="支持主播，成为全平台贵族！"
+        android:textColor="@android:color/holo_orange_dark" />
+
+    <TextView
+        android:layout_width="75dp"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:text="开通贵族"
+        android:layout_alignParentEnd="true"
+        android:textColor="@android:color/white"
+        android:background="@drawable/video_view_main_aristocrat_bottom_bar_text_bg"/>
+</RelativeLayout>

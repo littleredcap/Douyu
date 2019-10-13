@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp">
+
+    <TextView
+        android:id="@+id/video_view_main_recycler_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/video_view_main_recyclerview_chat_rank"
+        android:textSize="15sp"
+        android:text="20"
+        android:fontFamily="monospace"
+        android:textColor="@android:color/white"
+        android:background="@drawable/video_view_main_recyclerview_chat_level_bg"
+        android:textStyle="bold"
+        android:layout_marginEnd="10dp"/>
+
+    <TextView
+        android:id="@+id/video_view_main_recycler_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="只系洪辰"
+        android:textColor="#B8B8B8"
+        android:textSize="15sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="："
+        android:textColor="#B8B8B8"
+        android:textSize="13sp"/>
+    <TextView
+        android:id="@+id/video_view_main_recycler_command"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="你说了我想说的话"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"/>
+</LinearLayout>

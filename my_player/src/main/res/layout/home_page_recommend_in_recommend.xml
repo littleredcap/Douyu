@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include layout="@layout/home_page_recommend_in_recommend_banner" />
+
+    <include layout="@layout/home_page_recommend_in_recommend_grid_view" />
+
+    <!--<include layout="@layout/home_page_recommend_in_recommend_card_view"/>-->
+    <!--<liang.zhou.lane8.no5.my_player.ui.MyRecyclerView
+        android:id="@+id/home_page_recommend_in_recommend_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </liang.zhou.lane8.no5.my_player.ui.MyRecyclerView>-->
+    <!--<GridView
+        android:id="@+id/home_page_recommend_in_recommend_grid_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        android:scrollbars="none">
+    </GridView>-->
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="15dp"
+    android:gravity="center">
+    <ImageView
+        android:id="@+id/imageView_WeChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_wechat" />
+
+    <View
+        android:id="@+id/v_blank1"
+        android:layout_width="45dp"
+        android:layout_height="match_parent"/>
+    <ImageView
+        android:id="@+id/imageView_QQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_qq" />
+    <View
+        android:id="@+id/v_blank2"
+        android:layout_width="45dp"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/imageView_WeiBo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_webo" />
+
+    <View
+        android:id="@+id/v_blank3"
+        android:layout_width="45dp"
+        android:layout_height="match_parent"/>
+    <ImageView
+        android:id="@+id/imageView_Mobile_Num"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_mobile" />
+</LinearLayout>

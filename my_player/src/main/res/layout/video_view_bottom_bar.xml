@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingStart="10dp"
+    android:paddingEnd="5dp"
+    android:background="@drawable/video_view_bottom_bar_half_transp_bg">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="4">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="imbadota2频道"
+                android:textSize="13sp"
+                android:textColor="@android:color/white"/>
+            <TextView
+                android:layout_width="45dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:layout_marginStart="5dp"
+                android:text="LV.51"
+                android:textSize="11sp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/video_view_bottom_bar_round_corner"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="热度 22.2万"
+                android:textSize="11sp"
+                android:textColor="@android:color/darker_gray"
+                android:paddingEnd="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginStart="5dp"
+                android:text="关注 22.2万"
+                android:textSize="11sp"
+                android:textColor="@android:color/darker_gray"
+                android:paddingEnd="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginStart="5dp"
+                android:text="房号 19002"
+                android:textSize="11sp"
+                android:textColor="@android:color/darker_gray"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:layout_weight="0.1">
+        <ImageView
+            android:id="@+id/video_view_bottom_bar_pause"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/video_view_bottom_bar_pause_24dp"/>
+        <ImageView
+            android:id="@+id/video_view_bottom_bar_full_screen"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/video_view_bottom_bar_fullscreen_24dp"/>
+    </LinearLayout>
+</LinearLayout>

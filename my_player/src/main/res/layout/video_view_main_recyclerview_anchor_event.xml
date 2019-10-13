@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <liang.zhou.lane8.no5.my_player.ui.MyCircleImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:src="@mipmap/yukee"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/video_view_main_recycler_anchor_anchorName_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="陈钰琪_yuKee"
+            android:textSize="15sp"
+            android:textColor="@android:color/holo_orange_dark"/>
+        <TextView
+            android:id="@+id/video_view_main_recycler_anchor_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="今天倚天屠龙记更新了，大家记得收看敏敏！"
+            android:textColor="@android:color/black"
+            android:textSize="13sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/video_view_main_recycler_anchor_event_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingEnd="200dp"
+                android:text="04-03"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/video_view_main_recyclerview_anchor_like"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/video_view_main_recyclerview_anchor_comment" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/video_view_main_recycler_anchor_comment_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#bbbbbb"
+            android:orientation="vertical">
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

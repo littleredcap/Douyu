@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/home_page_rec_rec_activity_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:text="活动"
+        android:textSize="17sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+    <View
+        android:id="@+id/home_page_rec_rec_line"
+        android:layout_width="1dp"
+        android:layout_height="15dp"
+        android:layout_toEndOf="@id/home_page_rec_rec_activity_label"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:background="@android:color/darker_gray"/>
+    <TextView
+        android:id="@+id/home_page_rec_rec_activity_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:textSize="11sp"
+        android:text="陈钰琪粉丝会"
+        android:layout_toEndOf="@id/home_page_rec_rec_line"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/home_page_rec_rec_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/home_page_rec_rec_activity_name"
+        android:layout_toEndOf="@id/home_page_rec_rec_line"
+        android:text="4月28日"
+        android:layout_marginEnd="7dp"
+        android:textSize="11sp" />
+    <TextView
+        android:id="@+id/home_page_rec_rec_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/home_page_rec_rec_activity_name"
+        android:layout_toEndOf="@id/home_page_rec_rec_date"
+        android:layout_marginEnd="7dp"
+        android:text="19:00开始"
+        android:textSize="11sp" />
+    <TextView
+        android:id="@+id/home_page_rec_rec_population"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/home_page_rec_rec_activity_name"
+        android:layout_toEndOf="@id/home_page_rec_rec_time"
+        android:text="1000万"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="11sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/home_page_rec_rec_activity_name"
+        android:layout_toEndOf="@id/home_page_rec_rec_population"
+        android:layout_marginEnd="7dp"
+        android:text="人预订"
+        android:textSize="11sp" />
+    <TextView
+        android:id="@+id/home_page_rec_rec_subscribe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:text="预订"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:background="@drawable/home_page_rec_in_rec_vf_item1_corner_bg"/>
+</RelativeLayout>

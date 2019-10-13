@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<include
+    android:id="@+id/home_page_top_bar"
+    layout="@layout/home_page_top" />
+
+
+<FrameLayout
+    android:id="@+id/home_page_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/home_page_top_bar"
+    android:layout_above="@id/home_page_bottom_bar">
+</FrameLayout>
+
+
+<LinearLayout
+    android:id="@+id/home_page_bottom_bar"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_alignParentBottom="true">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:text="推荐"
+        android:drawableTop="@drawable/home_page_bottom_bar_recommend"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:text="娱乐"
+        android:drawableTop="@drawable/home_page_bottom_bar_recommend"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:text="关注"
+        android:drawableTop="@drawable/home_page_bottom_bar_recommend"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:text="鱼吧"
+        android:drawableTop="@drawable/home_page_bottom_bar_recommend"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:text="发现"
+        android:drawableTop="@drawable/home_page_bottom_bar_recommend"/>
+</LinearLayout>
+</RelativeLayout>

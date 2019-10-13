@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <liang.zhou.lane8.no5.my_player.ui.MyCircleImageView
+        android:id="@+id/video_view_main_rank_daily_recycle_item_portrait"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/yukee"
+        android:layout_marginEnd="20dp"/>
+    <TextView
+        android:id="@+id/video_view_main_rank_daily_recycle_item_fansName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="陈钰琪_yukee"
+        android:layout_toRightOf="@id/video_view_main_rank_daily_recycle_item_portrait"
+        android:textColor="@android:color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="贡献 6000"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pili.pldroid.player.widget.PLVideoView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/plVideoView_player"
+    android:layout_width="match_parent"
+    android:layout_height="223dp">
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        layout="@layout/video_view_top_bar" />
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        layout="@layout/video_view_bottom_bar"/>
+</com.pili.pldroid.player.widget.PLVideoView>

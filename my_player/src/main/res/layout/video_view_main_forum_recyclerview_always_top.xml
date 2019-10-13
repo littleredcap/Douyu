@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:layout_marginTop="0.1dp"
+    android:layout_marginBottom="0.1dp"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/video_view_main_forum_always_top_tv"
+        android:layout_width="43dp"
+        android:layout_height="23dp"
+        android:gravity="center"
+        android:text="置顶"
+        android:layout_centerVertical="true"
+        android:textColor="@android:color/holo_orange_dark"
+        android:background="@drawable/video_view_main_forum_always_top_corner"
+        android:layout_marginStart="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="欢迎来到陈钰琪_yukee的直播间"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/video_view_main_forum_always_top_tv"
+        android:textColor="@android:color/black"
+        android:layout_marginStart="20dp"/>
+    <!--<View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@android:color/darker_gray"
+        android:layout_alignParentBottom="true"/>-->
+</RelativeLayout>

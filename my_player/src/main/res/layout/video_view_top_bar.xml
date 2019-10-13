@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/video_view_top_bar_half_transp_bg">
+
+    <ImageView
+        android:id="@+id/image_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/video_view_top_bar_back_24dp"/>
+
+        <TextView
+            android:id="@+id/video_view_top_bar_definition_tv"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:text="超清"
+            android:textColor="@android:color/white"
+            android:layout_centerVertical="true"
+            android:textSize="12sp"
+            android:layout_marginEnd="10dp"
+            android:layout_toLeftOf="@id/video_view_top_projector"
+            android:background="@drawable/video_view_definition_round_corner"/>
+        <ImageView
+            android:id="@+id/video_view_top_projector"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/video_view_top_more_iv"
+            android:src="@drawable/video_view_project_to_tv_24dp"/>
+        <ImageView
+            android:id="@+id/video_view_top_more_iv"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/video_view_top_share_iv"
+            android:src="@drawable/video_view_more"/>
+        <ImageView
+            android:id="@+id/video_view_top_share_iv"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/video_view_share"
+            android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

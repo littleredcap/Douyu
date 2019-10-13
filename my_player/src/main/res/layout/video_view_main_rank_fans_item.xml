@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:layout_marginBottom="20dp">
+
+    <liang.zhou.lane8.no5.my_player.ui.MyCircleImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/yukee"
+        android:layout_marginEnd="25dp"/>
+    <TextView
+        android:id="@+id/video_view_main_rank_fans_recycle_item_rank_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/video_view_main_recyclerview_chat_level_bg"
+        android:drawableEnd="@drawable/video_view_main_recyclerview_chat_rank"
+        android:text="20"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/video_view_main_rank_fans_recycle_item_rank_fansName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:text="陈钰琪黑粉"/>
+</LinearLayout>

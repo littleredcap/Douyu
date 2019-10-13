@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:background="@android:color/holo_orange_dark">
+
+    <liang.zhou.lane8.no5.my_player.ui.MyCircleImageView
+        android:id="@+id/home_page_top_portrait"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_margin="10dp"
+        android:src="@mipmap/yukee"/>
+
+    <EditText
+        android:layout_width="215dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:hint="陈钰琪_yukee"
+        android:textSize="13sp"
+        android:drawableStart="@drawable/home_page_top_search"
+        android:drawableEnd="@drawable/home_page_top_qr_scan"
+        android:paddingStart="7dp"
+        android:paddingEnd="10dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/home_page_top_edit_text_round_corner_bg"/>
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/home_page_top_clock"/>
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/home_page_top_bar_game"/>
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/home_page_top_bar_message"/>
+</LinearLayout>

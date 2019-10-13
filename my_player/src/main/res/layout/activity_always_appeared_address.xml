@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/activity_always_appeared_address_back_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:id="@+id/always"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/activity_always_appeared_address_back_iv"
+            android:text="常出没地点"
+            android:textColor="@android:color/black"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/activity_always_appeared_address_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="添加"
+            android:textColor="@android:color/black"
+            android:textSize="13sp" />
+    </RelativeLayout>
+    <!--<android.support.v7.widget.Toolbar
+        android:id="@+id/activity_always_appeared_address_toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:fitsSystemWindows="true">
+    </android.support.v7.widget.Toolbar>-->
+    <RelativeLayout
+        android:id="@+id/activity_always_appeared_address_label_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EEEEEE">
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/yukee" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="还没设置常出没地点" />
+
+        <TextView
+            android:id="@+id/activity_always_appeared_address_addLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/activity_always_appeared_address_add_tv_round_corner"
+            android:gravity="center"
+            android:paddingStart="45dp"
+            android:paddingTop="7dp"
+            android:paddingEnd="45dp"
+            android:paddingBottom="7dp"
+            android:text="添加"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_always_appeared_address_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EEEEEE"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_in_appeared"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:text="长按删除地点" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="6dp"
+            android:text="最多添加5个地点" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/activity_always_appeared_address_flexBox"
+            app:alignItems="flex_start"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            app:justifyContent="flex_start"
+            app:alignContent="flex_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_in_appeared"
+            android:background="@android:color/white">
+        </com.google.android.flexbox.FlexboxLayout>
+    </RelativeLayout>
+
+</LinearLayout>

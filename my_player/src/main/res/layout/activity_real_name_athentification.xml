@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_address_city_select_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:paddingTop="10dp"
+        android:background="?attr/colorPrimary">
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:id="@+id/activity_real_name_auth_ali_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支付宝一键认证"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:paddingStart="35dp"
+        android:paddingEnd="35dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/activity_real_name_auth"
+        android:textSize="17sp"/>
+    <TextView
+        android:id="@+id/activity_real_name_auth_other_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="其他认证方式"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="15sp"/>
+</LinearLayout>

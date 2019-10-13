@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:layout_marginBottom="20dp">
+
+    <TextView
+        android:id="@+id/home_page_recommend_recycler_view_item_class_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:text="推荐分类"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="17sp"/>
+    <liang.zhou.lane8.no5.my_player.my_pager_grid_view.MyPagerGridView
+        android:id="@+id/home_page_recommend_recycler_view_item_class_game"
+        android:layout_width="match_parent"
+        android:layout_height="265dp">
+    </liang.zhou.lane8.no5.my_player.my_pager_grid_view.MyPagerGridView>
+</LinearLayout>
