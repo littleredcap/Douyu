@@ -153,11 +153,6 @@ public class JellyButton extends View {
         core.drawMyself(canvas);
     }
 
-    @Override
-    public boolean performClick() {
-        return super.performClick();
-    }
-
     public void playAnimation(){
         clearCircles();
         createCircles(3);
