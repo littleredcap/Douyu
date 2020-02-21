@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import liang.zhou.lane8.no5.my_business.login_register.DefaultL_R;
 import liang.zhou.lane8.no5.my_business.login_register.Login_Register;
+import liang.zhou.lane8.no5.my_player.screen_adapt.AutoSize;
+import liang.zhou.lane8.no5.my_player.screen_adapt.ResourcesWrapper;
 
 public class ActivityLogin extends AppCompatActivity {
 
@@ -28,6 +30,8 @@ public class ActivityLogin extends AppCompatActivity {
         setContentView(R.layout.login_by_mobile);
         tv_mobile_number=findViewById(R.id.login_by_mobile_number);
         tv_account_password=findViewById(R.id.login_password);
+        tv_mobile_number.setText("cc_yukee");
+        tv_account_password.setText("85100692");
         tv_login=findViewById(R.id.button_login_in_by_mobile);
         lr= new DefaultL_R();
         tv_login.setOnTouchListener(new View.OnTouchListener() {
@@ -38,6 +42,7 @@ public class ActivityLogin extends AppCompatActivity {
                 String result=lr.login(mobile_number,password,app.currentUser);
                 Toast.makeText(ActivityLogin.this,result,Toast.LENGTH_LONG).show();
                 if(app.currentUser.getUserId()>0){
+                    Global.myself=app.currentUser;
                     Intent intent=new Intent(ActivityLogin.this,ActivityHomePage.class);
                     startActivity(intent);
                 }
@@ -45,4 +50,5 @@ public class ActivityLogin extends AppCompatActivity {
             }
         });
     }
+
 }

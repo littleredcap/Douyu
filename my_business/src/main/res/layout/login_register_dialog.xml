@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:padding="@dimen/dp_20"
     android:clipChildren="false"
     android:clipToPadding="false"
     android:background="@android:color/white">
@@ -36,14 +36,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="20dp">
+        android:layout_margin="@dimen/dp_20">
 
         <RelativeLayout
             android:id="@+id/rl_login_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="30dp"
-            android:paddingBottom="30dp"
+            android:paddingTop="@dimen/dp_26"
+            android:paddingBottom="@dimen/dp_26"
             android:clipChildren="false"
             android:clipToPadding="false">
             <TextView
@@ -52,8 +52,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:text="登录"
-                android:layout_marginEnd="100dp"
-                android:textSize="50sp"
+                android:layout_marginEnd="@dimen/dp_100"
+                android:textSize="@dimen/sp_40"
                 android:textStyle="bold"/>
 
         </RelativeLayout>
@@ -65,16 +65,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:padding="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp">
+            android:padding="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_16">
             <TextView
                 android:id="@+id/tv_treaty_label_atLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#787878"
                 android:singleLine="true"
-                android:textSize="12sp"
+                android:textSize="@dimen/sp_12"
                 android:text="使用即为同意使用"/>
             <TextView
                 android:id="@+id/tv_treaty_label_atRight"
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:singleLine="true"
-                android:textSize="12sp"
+                android:textSize="@dimen/sp_12"
                 android:text="《斗鱼注册协议及版权声明》"/>
         </LinearLayout>
         <LinearLayout
@@ -90,26 +90,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="35dp"
+            android:layout_margin="@dimen/dp_24"
             android:gravity="center">
             <View
                 android:id="@+id/v_line_atLeft"
-                android:layout_width="30dp"
-                android:layout_height="1dp"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_1"
                 android:background="@android:color/darker_gray"/>
             <TextView
                 android:id="@+id/tv_login_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#787878"
-                android:textSize="19sp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
                 android:text="快速登录"/>
             <View
                 android:id="@+id/v_line_atRight"
-                android:layout_width="30dp"
-                android:layout_height="1dp"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_1"
                 android:background="@android:color/darker_gray"/>
         </LinearLayout>
 

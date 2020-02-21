@@ -31,10 +31,46 @@
         <FrameLayout
             android:id="@+id/home_page_frame"
             android:layout_width="match_parent"
-            android:layout_height="630dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"></FrameLayout>
+            android:layout_height="@dimen/dp_720"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </FrameLayout>
 
     </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/home_page_fab"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/home_page_bottom_bar"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:outlineAmbientShadowColor="@android:color/black"
+        android:outlineSpotShadowColor="@android:color/black"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/home_page_fab_helper"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/home_page_bottom_bar"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        android:outlineAmbientShadowColor="@android:color/black"
+        android:outlineSpotShadowColor="@android:color/black"/>
+
+    <liang.zhou.lane8.no5.my_player.ui.JellyButton
+        android:id="@+id/jellyButton"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:layout_above="@id/home_page_bottom_bar"/>
 
     <LinearLayout
         android:id="@+id/home_page_bottom_bar"

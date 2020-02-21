@@ -28,6 +28,11 @@ import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -40,6 +45,7 @@ import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -54,6 +60,7 @@ import liang.zhou.lane8.no5.my_business.data_model.User;
 import liang.zhou.lane8.no5.my_player.MyApplication;
 import liang.zhou.lane8.no5.my_player.R;
 import liang.zhou.lane8.no5.my_player.ServerResponse;
+import liang.zhou.lane8.no5.my_player.business_utils.JSONUtil;
 import liang.zhou.lane8.no5.my_player.okhttp.OKHttpUtil;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -155,7 +162,8 @@ public class RecommendInRecAdapter extends RecyclerView.Adapter {
                     public void response(Call call, Response response) {
                         try {
                             String jsonFromServer = response.body().string();
-                            Gson gson = new Gson();
+                            //Gson gson = new Gson();
+                            Gson gson= JSONUtil.getGSON();
                             Log.d("initBanner", jsonFromServer);
                             ArrayList<Function> funcs = gson.fromJson(jsonFromServer,
                                     new TypeToken<ArrayList<Function>>() {
@@ -350,7 +358,7 @@ public class RecommendInRecAdapter extends RecyclerView.Adapter {
                                         public void response(Call call, Response response) {
                                             try {
                                                 String s=response.body().string();
-                                                Gson gson=new Gson();
+                                                Gson gson=JSONUtil.getGSON();
                                                 current_func=gson.fromJson(s, Function.class);
                                                 Message message = myHandler.obtainMessage();
                                                 message.what = UPDATE_FUNC;
@@ -421,10 +429,10 @@ public class RecommendInRecAdapter extends RecyclerView.Adapter {
             }else if(msg.what==UPDATE_FUNC){
                 TextView tv= (TextView) msg.obj;
                 if(current_func!=null){
-                    tv.setText(current_func.getSubPopulation()+"");
+                    tv.setText(String.valueOf(current_func.getSubPopulation()));
                     sub_ids();
                     TextView tv_population= (TextView) func_map_tv.get(current_func.getId());
-                    tv_population.setText(current_func.getSubPopulation()+"");
+                    tv_population.setText(String.valueOf(current_func.getSubPopulation()));
                     subscribed_or_not(current_func,tv);
                     tv.setEnabled(true);
                     tv.setClickable(true);

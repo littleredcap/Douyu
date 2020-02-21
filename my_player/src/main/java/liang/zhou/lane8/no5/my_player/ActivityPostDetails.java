@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.DisplayCutout;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,8 +34,12 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.List;
 
 import liang.zhou.lane8.no5.my_business.Constant;
+import liang.zhou.lane8.no5.my_player.business_utils.JSONUtil;
+import liang.zhou.lane8.no5.my_player.network_model.DataArrivedListener;
+import liang.zhou.lane8.no5.my_player.network_model.NetworkModelContext;
 import liang.zhou.lane8.no5.my_player.okhttp.OKHttpUtil;
 import liang.zhou.lane8.no5.my_player.ui.MyCircleImageView;
 import okhttp3.Call;
@@ -56,12 +61,16 @@ public class ActivityPostDetails extends AppCompatActivity {
     private EditText sendText;
     private MyApplication app;
     private Calendar c;
+    private NetworkModelContext networkModelContext;
+    private DisplayCutout cutout;
     
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forum_post_details);
         app= (MyApplication) getApplication();
+        networkModelContext=new NetworkModelContext();
+        networkModelContext.useRxJava();
         recyclerView=findViewById(R.id.forum_post_details_post);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -110,7 +119,7 @@ public class ActivityPostDetails extends AppCompatActivity {
     }
 
     private void sendText(String content) {
-        OKHttpUtil.uploadJSONs(Constant.HOST + "PostServlet", getPostJson(content), new ServerResponse() {
+        /*OKHttpUtil.uploadJSONs(Constant.HOST + "PostServlet", getPostJson(content), new ServerResponse() {
             @Override
             public void response(Call call, Response response) {
                 try {
@@ -119,7 +128,8 @@ public class ActivityPostDetails extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        });
+        });*/
+        networkModelContext.post(null,getPostJson(content));
     }
 
     private String getPostJson(String content) {
@@ -192,7 +202,7 @@ public class ActivityPostDetails extends AppCompatActivity {
             public void response(Call call, Response response) {
                 try {
                     String jsonFromServer=response.body().string();
-                    Gson gson=new Gson();
+                    Gson gson= JSONUtil.getGSON();
                     ArrayList<Post> posts=gson.fromJson(jsonFromServer,new TypeToken<ArrayList<Post>>(){}.getType());
                     if(posts!=null){
                         currentPage=currentPage+posts.size();
@@ -210,6 +220,18 @@ public class ActivityPostDetails extends AppCompatActivity {
                 }
             }
         });
+        /*networkModelContext.loadPost(new DataArrivedListener<Post>(){
+
+            @Override
+            public void dataArrived(List<Post> data_collection) {
+                Log.d("onDataArrived",data_collection.size()+"");
+            }
+
+            @Override
+            public void jsonArrived(JSONObject response) {
+
+            }
+        },getJson());*/
     }
 
     class MyAdapter extends RecyclerView.Adapter{
@@ -301,7 +323,7 @@ public class ActivityPostDetails extends AppCompatActivity {
                 public void response(Call call, Response response) {
                     try {
                         String jsonFromServer=response.body().string();
-                        Gson gson=new Gson();
+                        Gson gson=JSONUtil.getGSON();
                         ArrayList<Post> posts=gson.fromJson(jsonFromServer,
                                 new TypeToken<ArrayList<Post>>(){}.getType());
                         if(posts!=null){

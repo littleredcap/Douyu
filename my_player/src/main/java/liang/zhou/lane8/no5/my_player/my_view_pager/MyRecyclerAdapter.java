@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import liang.zhou.lane8.no5.my_business.data_model.User;
 import liang.zhou.lane8.no5.my_player.DanMu;
@@ -17,10 +18,10 @@ import liang.zhou.lane8.no5.my_player.R;
 
 public class MyRecyclerAdapter extends RecyclerView.Adapter {
 
-    private ArrayList<DanMu> danMus;
+    private ArrayList<HashMap> danMus;
 
 
-    public MyRecyclerAdapter(ArrayList<DanMu> danMus){
+    public MyRecyclerAdapter(ArrayList<HashMap> danMus){
         this.danMus=danMus;
     }
 
@@ -35,15 +36,15 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         CommentHolder holder= (CommentHolder) viewHolder;
-        DanMu danMu=danMus.get(i);
-        User user=danMus.get(i).getTaker();
+        HashMap danMu=danMus.get(i);
+        /*User user=danMus.get(i).getTaker();
         if(user.getRank()==null||user.getRank().equals("")){
             holder.video_view_main_recycler_rank.setText("0");
         }else {
             holder.video_view_main_recycler_rank.setText(user.getRank());
-        }
-        holder.video_view_main_recycler_username.setText(user.getUsername());
-        holder.video_view_main_recycler_command.setText(danMu.getContent());
+        }*/
+        holder.video_view_main_recycler_username.setText(danMu.get("userHash").toString());
+        holder.video_view_main_recycler_command.setText(danMu.get("text").toString());
     }
 
     @Override

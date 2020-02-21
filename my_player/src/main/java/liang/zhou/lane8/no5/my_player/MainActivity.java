@@ -42,6 +42,7 @@ import liang.zhou.lane8.no5.my_player.my_view_pager.FragmentChat;
 import liang.zhou.lane8.no5.my_player.my_view_pager.FragmentForum;
 import liang.zhou.lane8.no5.my_player.my_view_pager.FragmentRank;
 import liang.zhou.lane8.no5.my_player.my_view_pager.MyPagerAdapter;
+import master.flame.danmaku.ui.widget.DanmakuView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -226,7 +227,8 @@ public class MainActivity extends AppCompatActivity {
     private void initPager() {
         viewPager = findViewById(R.id.video_view_main_viewPager);
         fragments = new ArrayList<>();
-        fragments.add(new FragmentChat());
+        FragmentChat fragmentChat=new FragmentChat();
+        fragments.add(fragmentChat);
         fragments.add(new FragmentAnchor());
         fragments.add(new FragmentRank());
         fragments.add(new FragmentAristocrat());

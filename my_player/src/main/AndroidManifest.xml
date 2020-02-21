@@ -11,18 +11,21 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="REQUEST_INSTALL_PACKAGES"/>
 
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".MyApplication"
+        android:usesCleartextTraffic="true"
         >
-        <meta-data android:name="APP_CHANNEL" android:value="${APP_CHANNEL_VALUE}"/>
+
+
         <activity android:name="com.jeanboy.cropview.cropper.CropActivity" />
         <activity android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

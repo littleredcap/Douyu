@@ -37,6 +37,8 @@ import liang.zhou.lane8.no5.my_business.data_model.User;
 import liang.zhou.lane8.no5.my_business.login_register.DefaultL_R;
 import liang.zhou.lane8.no5.my_business.login_register.Login_Register;
 import liang.zhou.lane8.no5.my_player.okhttp.OKHttpUtil;
+import liang.zhou.lane8.no5.my_player.screen_adapt.AutoSize;
+import liang.zhou.lane8.no5.my_player.screen_adapt.ResourcesWrapper;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -54,8 +56,8 @@ public class ActivityShowDialog extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         app= (MyApplication) getApplication();
-        setContentView(liang.zhou.lane8.no5.my_business.R.layout.activity_main);
-        text_result = findViewById(liang.zhou.lane8.no5.my_business.R.id.text_result);
+        setContentView(R.layout.activity_main);
+        text_result = findViewById(R.id.text_result);
 
         tencent=Tencent.createInstance("101580796", getApplicationContext());
         popupDialog();
@@ -206,6 +208,7 @@ public class ActivityShowDialog extends AppCompatActivity {
         dialog.getWindow().setAttributes(params);*/
     }
 
+
     private void toUser(User user,JSONObject resultJSON){
         try {
             user.setUserId(Integer.parseInt(resultJSON.getString("userId")));
@@ -338,5 +341,25 @@ public class ActivityShowDialog extends AppCompatActivity {
         User user =new User();
         String result = lr.login("cici", "199208044038", user);
         text_result.setText(result + ",正确为：" + user.getUsername() + ":" + user.getPassword());
+    }
+    public ResourcesWrapper mResources;
+
+    @Override
+    public android.content.res.Resources getResources() {
+        if (mResources == null) {
+            final AutoSize autoSize = getAutoSize();
+            if (autoSize != null) {
+                mResources = new ResourcesWrapper(super.getResources(), autoSize);
+            }
+        }
+        return mResources != null ? mResources : super.getResources();
+    }
+
+    /**
+     * 子类可重写适配
+     **/
+    @Nullable
+    protected AutoSize getAutoSize() {
+        return new AutoSize(400/*设计的宽度dp*/, true);
     }
 }

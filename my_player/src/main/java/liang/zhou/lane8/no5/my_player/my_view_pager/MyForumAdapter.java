@@ -31,6 +31,9 @@ import liang.zhou.lane8.no5.my_player.ActivityPostDetails;
 import liang.zhou.lane8.no5.my_player.Post;
 import liang.zhou.lane8.no5.my_player.R;
 import liang.zhou.lane8.no5.my_player.ServerResponse;
+import liang.zhou.lane8.no5.my_player.business_utils.JSONUtil;
+import liang.zhou.lane8.no5.my_player.network_model.DataArrivedListener;
+import liang.zhou.lane8.no5.my_player.network_model.NetworkModelContext;
 import liang.zhou.lane8.no5.my_player.okhttp.OKHttpUtil;
 import liang.zhou.lane8.no5.my_player.ui.MyCircleImageView;
 import liang.zhou.lane8.no5.my_player.ui.Utils;
@@ -50,6 +53,7 @@ public class MyForumAdapter extends RecyclerView.Adapter {
     private MyHandler handler;
     private final int UPDATE_LIKE=0;
     private String roomName;
+    private NetworkModelContext networkModelContext;
 
     public MyForumAdapter(ArrayList<Post> posts,String roomName){
         this.posts=posts;
@@ -57,6 +61,8 @@ public class MyForumAdapter extends RecyclerView.Adapter {
         alwaysTop.add(posts.get(posts.size()-1));
         alwaysTop.add(posts.get(posts.size()-2));
         alwaysTop.add(posts.get(posts.size()-3));
+        networkModelContext=new NetworkModelContext();
+        networkModelContext.useRxJava();
         /*posts.remove(posts.size()-1);
         posts.remove(posts.size()-2);
         posts.remove(posts.size()-3);*/
@@ -162,6 +168,7 @@ public class MyForumAdapter extends RecyclerView.Adapter {
         fvh.like.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+
 
                 OKHttpUtil.uploadJSONs(Constant.HOST + "PostLikeServlet",
                         getJson(post.getPostId()), new ServerResponse() {

@@ -25,6 +25,7 @@ import liang.zhou.lane8.no5.my_player.Post;
 import liang.zhou.lane8.no5.my_player.PostManager;
 import liang.zhou.lane8.no5.my_player.R;
 import liang.zhou.lane8.no5.my_player.ServerResponse;
+import liang.zhou.lane8.no5.my_player.business_utils.JSONUtil;
 import liang.zhou.lane8.no5.my_player.home_pager_recommend_fragment.RecommendInRecAdapter;
 import liang.zhou.lane8.no5.my_player.okhttp.OKHttpUtil;
 import okhttp3.Call;
@@ -70,7 +71,7 @@ public class FragmentForum extends FragmentBase {
             public void response(Call call, Response response) {
                 try {
                     String jsonFromServer=response.body().string();
-                    Gson gson=new Gson();
+                    Gson gson= JSONUtil.getGSON();
                     ArrayList<Post> posts=gson.fromJson(jsonFromServer,new TypeToken<ArrayList<Post>>(){}.getType());
                     Message message=new Message();
                     message.obj=posts;

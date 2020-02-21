@@ -26,6 +26,7 @@ import java.util.Calendar;
 import liang.zhou.lane8.no5.my_business.Constant;
 import liang.zhou.lane8.no5.my_player.R;
 import liang.zhou.lane8.no5.my_player.ServerResponse;
+import liang.zhou.lane8.no5.my_player.business_utils.JSONUtil;
 import liang.zhou.lane8.no5.my_player.home_pager_recommend_fragment.GameClass;
 import liang.zhou.lane8.no5.my_player.home_pager_recommend_fragment.LiveRoom;
 import liang.zhou.lane8.no5.my_player.okhttp.OKHttpUtil;
@@ -60,7 +61,7 @@ public class FragmentMatchPreview extends Fragment {
                     public void response(Call call, Response response) {
                         try {
                             String jsonFromServer=response.body().string();
-                            Gson gson=new Gson();
+                            Gson gson= JSONUtil.getGSON();
                             ArrayList<Match> matches = gson.fromJson(jsonFromServer,
                                     new TypeToken<ArrayList<Match>>() {}.getType());
                             Message message=myHandler.obtainMessage();

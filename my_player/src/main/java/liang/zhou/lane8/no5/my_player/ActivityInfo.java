@@ -42,8 +42,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 import liang.zhou.lane8.no5.my_business.Constant;
+import liang.zhou.lane8.no5.my_player.business_utils.JSONUtil;
+import liang.zhou.lane8.no5.my_player.common_utils.StringUtils;
+import liang.zhou.lane8.no5.my_player.network_model.DataArrivedListener;
+import liang.zhou.lane8.no5.my_player.network_model.NetworkModelContext;
 import liang.zhou.lane8.no5.my_player.okhttp.OKHttpUtil;
 import liang.zhou.lane8.no5.my_player.ui.DividerItemDecoration;
 import okhttp3.Call;
@@ -54,6 +59,7 @@ public class ActivityInfo extends AppCompatActivity implements CropperHandler {
     private RecyclerView recyclerView;
     private InfoRecyclerViewAdapter recycler_adapter;
     private MyApplication ma;
+    private NetworkModelContext networkModelContext;
 
 
     @Override
@@ -61,6 +67,8 @@ public class ActivityInfo extends AppCompatActivity implements CropperHandler {
         super.onCreate(savedInstanceState);
 
         ma = (MyApplication) getApplication();
+        networkModelContext=new NetworkModelContext();
+        networkModelContext.useRxJava();
         setContentView(R.layout.activity_personal_info);
         Toolbar toolbar = findViewById(R.id.activity_personal_info_toolBar);
         toolbar.setTitle("个人资料");
@@ -93,9 +101,14 @@ public class ActivityInfo extends AppCompatActivity implements CropperHandler {
         super.onNewIntent(intent);
         Bundle bundle = intent.getBundleExtra("addressBundle");
         items.get(recycler_adapter.getCurrentItemPosition()).value = bundle.getString("address");
-        OKHttpUtil.uploadJson(Constant.HOST + "UpdatePersonalInfoServlet", ma.currentUser.getUserId(),
-                "homeAddress",
-                items.get(recycler_adapter.getCurrentItemPosition()).value.toString(), null);
+        /*OKHttpUtil.uploadJson(Constant.dou_yu_base_url + "UpdatePersonalInfoServlet",
+                ma.currentUser.getUserId(), "homeAddress",
+                items.get(recycler_adapter.getCurrentItemPosition()).value.toString(), null);*/
+        String homeAddressValue=items.get(recycler_adapter.getCurrentItemPosition()).value.toString();
+        networkModelContext.updatePersonalInfo(null,
+                JSONUtil.toJson("userId,"+ Global.myself.getUserId()+
+                        ";homeAddress,"+homeAddressValue+";updatedColumn,"+
+                        StringUtils.upperCaseFirstChar("homeAddress")).toString());
         recycler_adapter.notifyItemChanged(recycler_adapter.getCurrentItemPosition());
         Log.d("onNewIntent", "onNewIntent");
     }
@@ -134,7 +147,10 @@ public class ActivityInfo extends AppCompatActivity implements CropperHandler {
     }
 
     private String extractTheFirst(String alwaysAppearance) {
-        String s[] = alwaysAppearance.split(",");
+        if(alwaysAppearance==null){
+            return "";
+        }
+        String s[] = alwaysAppearance.split("_");
         return s[0];
     }
 
@@ -229,8 +245,19 @@ public class ActivityInfo extends AppCompatActivity implements CropperHandler {
     @Override
     public void onCropped(Uri uri) {
         Log.d("=====onCropped======", "======裁切成功=======" + uri);
+        networkModelContext.uploadFile(new DataArrivedListener() {
+            @Override
+            public void dataArrived(List data_collection) {
+
+            }
+
+            @Override
+            public void jsonArrived(JSONObject response) {
+                Log.d("onJsonArrived",response.toString());
+            }
+        },uri.getPath(),"userId,"+Global.myself.getUserId());
         //recycler_adapter.setImageUri(uri.getPath());
-        OKHttpUtil.uploadImage(ma.currentUser.getUserId(), uri.getPath(), new ServerResponse() {
+        /*OKHttpUtil.uploadImage(ma.currentUser.getUserId(), uri.getPath(), new ServerResponse() {
             @Override
             public void response(Call call, Response response) {
                     runOnUiThread(new Runnable() {
@@ -250,7 +277,7 @@ public class ActivityInfo extends AppCompatActivity implements CropperHandler {
                         }
                     });
             }
-        });
+        });*/
     }
 
     @Override

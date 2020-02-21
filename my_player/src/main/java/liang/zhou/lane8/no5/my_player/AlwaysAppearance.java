@@ -26,8 +26,13 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.util.List;
 
 import liang.zhou.lane8.no5.my_business.Constant;
+import liang.zhou.lane8.no5.my_player.business_utils.JSONUtil;
+import liang.zhou.lane8.no5.my_player.common_utils.StringUtils;
+import liang.zhou.lane8.no5.my_player.network_model.DataArrivedListener;
+import liang.zhou.lane8.no5.my_player.network_model.NetworkModelContext;
 import liang.zhou.lane8.no5.my_player.okhttp.OKHttpUtil;
 import liang.zhou.lane8.no5.my_player.ui.Utils;
 import okhttp3.Call;
@@ -42,17 +47,20 @@ public class AlwaysAppearance extends AppCompatActivity {
     private RelativeLayout rl_container,rl_activity_always_appeared_address;
     private TextView tv_add;
     private MyApplication ma;
+    private NetworkModelContext networkModelContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ma= (MyApplication) getApplication();
+        networkModelContext=new NetworkModelContext();
+        networkModelContext.useRxJava();
         setContentView(R.layout.activity_always_appeared_address);
         flexboxLayout=findViewById(R.id.activity_always_appeared_address_flexBox);
         rl_container=findViewById(R.id.activity_always_appeared_address_label_container);
         rl_activity_always_appeared_address=findViewById(R.id.activity_always_appeared_address_rl);
         tv_add=findViewById(R.id.activity_always_appeared_address_add);
-        String al[]=ma.currentUser.getAlwaysAppearance().split(",");
+        String al[]=ma.currentUser.getAlwaysAppearance().split("_");
         for(int i=0;i<al.length;i++){
             if(!al[i].equals("")) {
                 createTextView(null, al[i]);
@@ -108,6 +116,21 @@ public class AlwaysAppearance extends AppCompatActivity {
                         createTextView(dialogView, text);
                         StringBuffer s=new StringBuffer();
                         collectAllAppearance(s);
+                        /*String data="userId,"+Global.myself.getUserId()+";alwaysAppearance,"+
+                                s.toString()+";updatedColumn,"+
+                                StringUtils.upperCaseFirstChar("alwaysAppearance");
+                        networkModelContext.updatePersonalInfo(new DataArrivedListener() {
+                            @Override
+                            public void dataArrived(List data_collection) {
+
+                            }
+
+                            @Override
+                            public void jsonArrived(JSONObject response) {
+                                Log.d("jsonArrived",response.toString());
+                                //ma.updateUser(response.toString());
+                            }
+                        },JSONUtil.toJson(data).toString());*/
                         OKHttpUtil.uploadJson(Constant.HOST + "UpdatePersonalInfoServlet",
                                 ma.currentUser.getUserId(),
                                 "alwaysAppearance", s.toString(), new ServerResponse() {
@@ -135,7 +158,7 @@ public class AlwaysAppearance extends AppCompatActivity {
                 TextView t= (TextView) view;
                 s.append(t.getText());
                 if (i != flexboxLayout.getChildCount() - 1) {
-                    s.append(",");
+                    s.append("_");
                 }
             }
         }

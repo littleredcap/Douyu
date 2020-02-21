@@ -89,9 +89,9 @@ public class GameFetcher {
         });
     }
     public interface GotGameCountListener{
-        public void gameCount(int howManyGames);
+        void gameCount(int howManyGames);
     }
     public interface GotGameListener{
-        public void gotGame(ArrayList<Game> games);
+        void gotGame(ArrayList<Game> games);
     }
 }

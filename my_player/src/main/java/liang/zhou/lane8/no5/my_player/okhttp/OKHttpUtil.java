@@ -11,6 +11,7 @@ import java.io.IOException;
 import liang.zhou.lane8.no5.my_business.Constant;
 import liang.zhou.lane8.no5.my_player.MyApplication;
 import liang.zhou.lane8.no5.my_player.ServerResponse;
+import liang.zhou.lane8.no5.my_player.common_utils.StringUtils;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -108,7 +109,7 @@ public class OKHttpUtil {
         try {
             object.put("userId",userId);
             object.put(key,value);
-            object.put("updatedColumn",upperCaseFirstChar(key));
+            object.put("updatedColumn", StringUtils.upperCaseFirstChar(key));
             Log.d("getJson",object.toString());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -116,14 +117,7 @@ public class OKHttpUtil {
         return object;
     }
 
-    private static String upperCaseFirstChar(String key) {
-        if(!key.equals("")) {
-            StringBuffer s = new StringBuffer();
-            s.append(Character.toUpperCase(key.charAt(0))).append(key.substring(1, key.length()));
-            return s.toString();
-        }
-        return "";
-    }
+
 
     public static void uploadKeyValue(String key,String value){
         OkHttpClient client=new OkHttpClient();
