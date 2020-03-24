@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private Tencent mTencent;
     private ImageView share;
     private String roomName;
+    private int roomId;
     private String coverUrl;
 
     @Override
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         hideStatusBar();
         roomName=getIntent().getStringExtra("roomName");
+        roomId=getIntent().getIntExtra("roomId",-1);
         coverUrl=getIntent().getStringExtra("coverUrl");
         bottom_line_indicator = findViewById(R.id.video_view_viewpager_indicator_bottom_line);
         aristocrat_count_ll = findViewById(R.id.video_view_viewpager_aristocrat_count_ll);
@@ -221,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         roomName=intent.getStringExtra("roomName");
+        roomId=intent.getIntExtra("roomId",-1);
         coverUrl=intent.getStringExtra("coverUrl");
     }
 
@@ -235,6 +238,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentForum fragmentForum=new FragmentForum();
         Bundle bundle=new Bundle();
         bundle.putString("roomName",roomName);
+        bundle.putInt("roomId",roomId);
         fragmentForum.setArguments(bundle);
         fragments.add(fragmentForum);
         initMiddleBarTextView();

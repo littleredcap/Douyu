@@ -11,7 +11,9 @@ import java.io.IOException;
 import liang.zhou.lane8.no5.my_business.Constant;
 import liang.zhou.lane8.no5.my_player.MyApplication;
 import liang.zhou.lane8.no5.my_player.ServerResponse;
+import liang.zhou.lane8.no5.my_player.business_utils.JSONUtil;
 import liang.zhou.lane8.no5.my_player.common_utils.StringUtils;
+import liang.zhou.lane8.no5.my_player.home_pager_recommend_fragment.DataManager;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -141,4 +143,25 @@ public class OKHttpUtil {
         });
     }
 
+    public static void sendSQL(String sql, String servletName, DataManager.DataResponse dataResponse){
+        OkHttpClient client=new OkHttpClient();
+        RequestBody requestBody=FormBody.create(MediaType.parse("application/json"),
+                JSONUtil.toJson("sql,"+sql).toString());
+        Request request=new Request.Builder().post(requestBody).
+                url(Constant.dou_yu_base_url+servletName).build();
+        Call call=client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Log.d("onSendSQL",result);
+                dataResponse.onResponse(result);
+            }
+        });
+    }
 }

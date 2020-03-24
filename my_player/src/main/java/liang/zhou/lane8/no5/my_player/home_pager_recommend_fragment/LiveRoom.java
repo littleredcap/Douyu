@@ -3,10 +3,19 @@ package liang.zhou.lane8.no5.my_player.home_pager_recommend_fragment;
 public class LiveRoom {
 
     private int id;
+    private int gameId;
     private String roomName;
     private String roomTitle;
     private String roomPicUrl;
     private int roomHeat;
+
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
 
     public int getId() {
         return id;

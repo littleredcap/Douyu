@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,12 +26,14 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import liang.zhou.lane8.no5.my_business.Constant;
 import liang.zhou.lane8.no5.my_player.MainActivity;
 import liang.zhou.lane8.no5.my_player.R;
 import liang.zhou.lane8.no5.my_player.ServerResponse;
 import liang.zhou.lane8.no5.my_player.home_pager_recommend_fragment.LiveRoom;
+import liang.zhou.lane8.no5.my_player.home_pager_recommend_fragment.LiveRoomManager;
 import liang.zhou.lane8.no5.my_player.home_pager_recommend_fragment.RoundCornerTrans;
 import liang.zhou.lane8.no5.my_player.okhttp.OKHttpUtil;
 import liang.zhou.lane8.no5.my_player.ui.Utils;
@@ -45,6 +48,8 @@ public class FragmentLive extends Fragment {
     private Context ctx;
     private boolean userVisible = false;
     private boolean is_first_load = true;
+    private LiveRoomManager liveRoomManager;
+    private int gameId;
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -55,7 +60,7 @@ public class FragmentLive extends Fragment {
     }
 
     private void fillForRecycle() {
-        OKHttpUtil.uploadJson(Constant.HOST + "FetchLiveRoomServlet", -1, "howMany",
+        /*OKHttpUtil.uploadJson(Constant.HOST + "FetchLiveRoomServlet", -1, "howMany",
                 8 + "", new ServerResponse() {
 
                     @Override
@@ -75,8 +80,20 @@ public class FragmentLive extends Fragment {
                             e.printStackTrace();
                         }
                     }
-                });
+                });*/
+        if(gameId!=-1) {
+            liveRoomManager.fetchLiveRoomByGameId(gameId, new ListArrivedListener<LiveRoom>() {
+                @Override
+                public void onListArrived(List<LiveRoom> data) {
+                    Message message = myHandler.obtainMessage();
+                    message.what = LOAD_RECYCLER_VIEW;
+                    message.obj = data;
+                    myHandler.sendMessage(message);
+                }
+            });
+        }else{
 
+        }
     }
 
     @Override
@@ -103,6 +120,9 @@ public class FragmentLive extends Fragment {
             super.handleMessage(msg);
             if (msg.what == LOAD_RECYCLER_VIEW) {
                 ArrayList<LiveRoom> liveRooms = (ArrayList<LiveRoom>) msg.obj;
+                if(liveRooms==null){
+                    liveRooms=new ArrayList<>();
+                }
                 //LiveRoom liveRoom= (LiveRoom) msg.obj;
                 //liveRooms.add(liveRoom);
                 recyclerView.setAdapter(new MyRecyclerViewAdapter(liveRooms));
@@ -117,7 +137,12 @@ public class FragmentLive extends Fragment {
                 null);
         ctx = container.getContext();
         myHandler = new MyHandler();
+        liveRoomManager=new LiveRoomManager();
+        gameId=getArguments().getInt("gameId");
+        Log.d("FragmentLive",gameId+"");
         initRecyclerView(viewGroup);
+
+
         return viewGroup;
     }
 
@@ -174,6 +199,7 @@ public class FragmentLive extends Fragment {
                     Intent intent=new Intent(ctx, MainActivity.class);
                     intent.putExtra("roomName",l.getRoomName());
                     intent.putExtra("coverUrl",l.getRoomPicUrl());
+                    intent.putExtra("roomId",l.getId());
                     ctx.startActivity(intent);
                     return false;
                 }

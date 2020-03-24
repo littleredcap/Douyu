@@ -164,6 +164,7 @@ public class AllAdapter extends RecyclerView.Adapter {
                     Intent intent=new Intent(parent.getContext(), MainActivity.class);
                     intent.putExtra("roomName",l.getRoomName());
                     intent.putExtra("coverUrl",l.getRoomPicUrl());
+                    intent.putExtra("roomId",l.getId());
                     parent.getContext().startActivity(intent);
                     return false;
                 }

@@ -3,7 +3,9 @@ package liang.zhou.lane8.no5.my_player;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -18,18 +20,23 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import liang.zhou.lane8.no5.my_player.animation.AnimationUtils;
 import liang.zhou.lane8.no5.my_player.animation.BackgroundTintWrapper;
+import liang.zhou.lane8.no5.my_player.common.ProgressListener;
+import liang.zhou.lane8.no5.my_player.glide.GlideApp;
 import liang.zhou.lane8.no5.my_player.home_pager_fragment.FragmentDiscovery;
 import liang.zhou.lane8.no5.my_player.home_pager_fragment.FragmentFollow;
 import liang.zhou.lane8.no5.my_player.home_pager_fragment.FragmentForum;
 import liang.zhou.lane8.no5.my_player.home_pager_fragment.FragmentRecommend;
 import liang.zhou.lane8.no5.my_player.home_pager_fragment.FragmentRecreation;
+import liang.zhou.lane8.no5.my_player.okhttp.ProgressInterceptor;
 import liang.zhou.lane8.no5.my_player.screen_adapt.AutoSize;
 import liang.zhou.lane8.no5.my_player.screen_adapt.ResourcesWrapper;
 import liang.zhou.lane8.no5.my_player.ui.JellyButton;
@@ -117,7 +124,38 @@ public class ActivityHomePage extends AppCompatActivity {
 
         options = RequestOptions.placeholderOf(R.mipmap.yukee).error(R.mipmap.yukee);
         portrait = findViewById(R.id.home_page_top_portrait);
-        Glide.with(this).load(app.currentUser.getPortrait()).apply(options).into(portrait);
+
+        ProgressInterceptor.addListener(Global.myself.getPortrait(), new ProgressListener() {
+            @Override
+            public void onProgressUpdate(int progress) {
+                Log.d("onProgressUpdate", "onProgress: " + progress);
+                //progressDialog.setProgress(progress);
+            }
+        });
+
+        SimpleTarget<Drawable> simpleTarget = new SimpleTarget<Drawable>() {
+            @Override
+            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                //progressDialog.dismiss();
+                portrait.setImageDrawable(resource);
+                //Log.d(TAG, "onResourceReady: ");
+                ProgressInterceptor.removeListener(Global.myself.getPortrait());
+            }
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                //Log.d(TAG, "onStart: ");
+                //progressDialog.show();
+            }
+        };
+        GlideApp.with(this)
+                .load(Global.myself.getPortrait())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)//不使用缓存
+                .skipMemoryCache(true)
+                .into(portrait);
+
+        //GlideApp.with(this).load(app.currentUser.getPortrait()).apply(options).into(portrait);
         portrait.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

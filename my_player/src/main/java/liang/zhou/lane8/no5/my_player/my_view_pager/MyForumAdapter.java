@@ -58,9 +58,11 @@ public class MyForumAdapter extends RecyclerView.Adapter {
     public MyForumAdapter(ArrayList<Post> posts,String roomName){
         this.posts=posts;
         alwaysTop=new ArrayList<>();
-        alwaysTop.add(posts.get(posts.size()-1));
-        alwaysTop.add(posts.get(posts.size()-2));
-        alwaysTop.add(posts.get(posts.size()-3));
+        if(posts!=null&&posts.size()>3) {
+            alwaysTop.add(posts.get(posts.size() - 1));
+            alwaysTop.add(posts.get(posts.size() - 2));
+            alwaysTop.add(posts.get(posts.size() - 3));
+        }
         networkModelContext=new NetworkModelContext();
         networkModelContext.useRxJava();
         /*posts.remove(posts.size()-1);

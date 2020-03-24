@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import liang.zhou.lane8.no5.my_business.Constant;
 import liang.zhou.lane8.no5.my_player.Post;
@@ -26,6 +27,7 @@ import liang.zhou.lane8.no5.my_player.PostManager;
 import liang.zhou.lane8.no5.my_player.R;
 import liang.zhou.lane8.no5.my_player.ServerResponse;
 import liang.zhou.lane8.no5.my_player.business_utils.JSONUtil;
+import liang.zhou.lane8.no5.my_player.home_page_general_game_fragment.ListArrivedListener;
 import liang.zhou.lane8.no5.my_player.home_pager_recommend_fragment.RecommendInRecAdapter;
 import liang.zhou.lane8.no5.my_player.okhttp.OKHttpUtil;
 import okhttp3.Call;
@@ -40,12 +42,14 @@ public class FragmentForum extends FragmentBase {
     private int pageSize=5;
     private MyHandler myHandler;
     private String roomName;
+    private int roomId;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle=getArguments();
         roomName=bundle.getString("roomName");
+        roomId=bundle.getInt("roomId");
     }
 
     @Nullable
@@ -66,7 +70,20 @@ public class FragmentForum extends FragmentBase {
     }
 
     private void loadPost() {
-        OKHttpUtil.uploadJSONs(Constant.HOST + "PoserServlet", getJson(), new ServerResponse() {
+        postManager.fetchPostByRoomId(roomId, new ListArrivedListener<Post>() {
+            @Override
+            public void onListArrived(List<Post> data) {
+                ArrayList<Post> posts= (ArrayList<Post>) data;
+                if(posts==null){
+                    posts=new ArrayList<>(1);
+                }
+                Message message=new Message();
+                message.obj=posts;
+                message.what=INIT_RECYCLER_VIEW;
+                myHandler.sendMessage(message);
+            }
+        });
+        /*OKHttpUtil.uploadJSONs(Constant.HOST + "PoserServlet", getJson(), new ServerResponse() {
             @Override
             public void response(Call call, Response response) {
                 try {
@@ -82,7 +99,7 @@ public class FragmentForum extends FragmentBase {
                     e.printStackTrace();
                 }
             }
-        });
+        });*/
     }
 
     private final int INIT_RECYCLER_VIEW=0;

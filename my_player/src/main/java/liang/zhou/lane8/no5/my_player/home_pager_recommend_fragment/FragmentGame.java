@@ -56,15 +56,20 @@ public class FragmentGame extends Fragment {
     private FragmentMatchPreview fragmentMatchPreview;
     private MyHandler myHandler;
     private final int INIT_BANNER=0;
+    private int gameId;
+    private Bundle bundle;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        bundle=getArguments();
+        //gameId=b.getInt("gameId");
         fragmentManager=getChildFragmentManager();
         if(savedInstanceState==null){
             initFragment();
         }else{
             fragmentLive= (FragmentLive) fragmentManager.findFragmentByTag("live");
+            fragmentLive.setArguments(bundle);
             fragmentVideo= (FragmentVideo) fragmentManager.findFragmentByTag("video");
             fragmentMatchPreview= (FragmentMatchPreview) fragmentManager.findFragmentByTag("preview");
         }
@@ -89,6 +94,7 @@ public class FragmentGame extends Fragment {
     private void initFragment() {
         if(fragmentLive==null) {
             fragmentLive = new FragmentLive();
+            fragmentLive.setArguments(bundle);
             transaction=fragmentManager.beginTransaction();
             transaction.add(R.id.home_page_rec_general_game_fragment,fragmentLive,"live");
             transaction.commit();
